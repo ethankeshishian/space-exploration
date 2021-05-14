@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-theme);
 }
 
 a {
@@ -13,4 +14,20 @@ a {
 
 * {
   box-sizing: border-box;
+  color: white;
 }
+/* Global constants */
+:root {
+  --background-theme: #21242b;
+  --accent-color: white;
+  --accent-active: black;
+}
+/* antd styles */
+/* .ant-btn-primary {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.ant-btn-primary:hover {
+  background: var(--accent-active);
+  border-color: var(--accent-active);
+} */
