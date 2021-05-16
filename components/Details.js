@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Modal } from 'antd';
 import { useWindowDimensions } from '../hooks';
 import { theme } from '../constants';
+import Date from './Date';
 
 export default function Details({
   data,
@@ -11,6 +12,7 @@ export default function Details({
   isModalVisible,
 }) {
   const { width, height } = useWindowDimensions();
+  const tags = data.keywords ? data.keywords.join(', ') : '';
   return (
     <Modal
       title={data.title}
@@ -21,19 +23,56 @@ export default function Details({
         backgroundColor: theme.backgroundTheme,
       }}
       width={width}
-      mask={false}
       cancelButtonProps={{ style: { display: 'none' } }}
       centered={true}
     >
-      <Image
-        src={link}
-        height={height - 100}
-        width={width - 40}
-        objectFit="contain"
-      />
-      <p>{data.description}</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <div style={{ width: width, height: 0.6 * height, position: 'relative' }}>
+        <Image src={link} layout="fill" objectFit="contain" />
+      </div>
+      <p style={{ fontSize: '2em', margin: 0, marginBottom: '.25em' }}>
+        {data.description}
+      </p>
+      {data.date_created ? (
+        <p
+          style={{
+            fontStyle: 'italic',
+            fontSize: '1.5em',
+            margin: '0',
+            display: 'inline-block',
+          }}
+        >
+          <Date dateString={data.date_created} />
+        </p>
+      ) : (
+        <></>
+      )}
+      {data.center ? (
+        <p
+          style={{
+            fontStyle: 'italic',
+            fontSize: '1.5em',
+            margin: '0',
+            display: 'inline-block',
+          }}
+        >
+          {' - '}
+          {data.center}
+        </p>
+      ) : (
+        <></>
+      )}
+      {data.location ? (
+        <p style={{ fontSize: '1.5em', margin: '0' }}>
+          Location: {data.location}{' '}
+        </p>
+      ) : (
+        <></>
+      )}
+      {tags === '' ? (
+        <></>
+      ) : (
+        <p style={{ fontSize: '1.5em', margin: '0' }}>Tags: {tags}</p>
+      )}
     </Modal>
   );
 }

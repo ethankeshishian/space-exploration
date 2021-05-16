@@ -37,19 +37,16 @@ h6 {
 }
 
 /* antd styles */
-/* .ant-btn-primary {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-}
-.ant-btn-primary:hover {
-  background: var(--accent-active);
-  border-color: var(--accent-active);
-} */
 .ant-modal-header {
   background-color: var(--background-theme);
 }
 .ant-modal-title {
   color: var(--text-color);
+  font-size: 2.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: unset;
+  white-space: nowrap;
 }
 .ant-modal-footer {
   background-color: var(--background-theme);
