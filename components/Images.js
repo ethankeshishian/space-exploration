@@ -1,8 +1,37 @@
 import Image from 'next/image';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
-export default function Images({ data }) {
+export default function Images({ data, loading }) {
+  /* 
+  props: {
+    data: {
+      links: {
+        render: string;
+        href: string;
+        ...
+      }[]
+    },
+    loading: bool;
+  }
+  */
   console.log(data);
-  return data.length === 0 ? (
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+  return loading ? (
+    <div className="loading">
+      <Spin indicator={antIcon} />
+      <style jsx>{`
+        .loading {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 100%;
+        }
+      `}</style>
+    </div>
+  ) : data.length === 0 ? (
     <></>
   ) : (
     <div className="images">
@@ -11,8 +40,13 @@ export default function Images({ data }) {
           return item.links.map((link) => {
             if (link.render === 'image') {
               return (
-                <div className="image-container">
-                  <Image src={link.href} layout="fill" objectFit="cover" />
+                <div className="image-container" key={link.href}>
+                  <Image
+                    src={link.href}
+                    layout="fill"
+                    objectFit="cover"
+                    key={link.href}
+                  />
                 </div>
               );
             }

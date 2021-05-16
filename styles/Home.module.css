@@ -1,26 +1,22 @@
 .container {
   min-height: 100vh;
-  /* padding: 0 0.5rem; */
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'search'
+    'main';
 }
 .header {
   top: 0;
   height: 30%;
 }
-.main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.search {
+  grid-area: search;
 }
-
-.images {
+.main {
+  grid-area: main;
 }
 .footer {
   width: 100%;
