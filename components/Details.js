@@ -11,6 +11,21 @@ export default function Details({
   handleCancel,
   isModalVisible,
 }) {
+  /* 
+  props: {
+    data: {
+      description: string;
+      date_created: string;
+      location: string;
+      center: string;
+      ...
+    }
+    link: string;
+    handleOk: Function;
+    handleCancel: Function;
+    isModalVisible: bool;
+  }
+  */
   const { width, height } = useWindowDimensions();
   const tags = data.keywords ? data.keywords.join(', ') : '';
   return (
@@ -62,7 +77,12 @@ export default function Details({
         <></>
       )}
       {data.location ? (
-        <p style={{ fontSize: '1.5em', margin: '0' }}>
+        <p
+          style={{
+            fontSize: '1.5em',
+            margin: '0',
+          }}
+        >
           Location: {data.location}{' '}
         </p>
       ) : (

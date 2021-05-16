@@ -1,18 +1,17 @@
-## High-Level TODO:
+# Introduction
 
-- Information page
-- Deploy
+Explore space using this tool to navigate the NASA database. Host locally or find it online [here](https://see-space.vercel.app).
 
-### Future:
+## Other
+
+### Dev commands:
+
+- Start development server with `npm run build`.
+- Build with `npm build`.
+
+### Future updates:
 
 - Redux
-- Additional search fields
-- Pop up additional info
-- Custom styles to components (dark theme search bar button, etc.)
-- Header _inside_ search component; background continues inside header
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Additional parameters below search bar
+- Extensive theming
+- Header extending search bar background
