@@ -1,6 +1,6 @@
 # Introduction
 
-Explore space using this tool to navigate the NASA database. Host locally or find it online [here](https://see-space.vercel.app).
+Explore space and navigate the NASA database using this tool. Host locally or find it online [here](https://see-space.vercel.app).
 
 ## Other
 
@@ -8,6 +8,7 @@ Explore space using this tool to navigate the NASA database. Host locally or fin
 
 - Start development server with `npm run build`.
 - Build with `npm build`.
+- Deploying is automatic when pushing to `main`.
 
 ### Future updates:
 
