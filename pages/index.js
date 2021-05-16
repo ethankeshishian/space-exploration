@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import SearchBar from '../components/SearchBar';
+import SearchBar from './SearchBar';
 import { useState } from 'react';
-import Images from '../components/Images';
+import Images from './Images';
 
 export default function Home() {
   const url = `https://images-api.nasa.gov/search`;

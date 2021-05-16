@@ -3,7 +3,7 @@ import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 import { useMediaQuery } from 'react-responsive';
-import Details from '../components/Details';
+import Details from './Details';
 import { useState } from 'react';
 import { Modal } from 'antd';
 

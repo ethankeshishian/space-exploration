@@ -8,7 +8,7 @@ export default function SearchBar({ search }) {
     <div className="container">
       <h1>Welcome!</h1>
       <Search
-        placeholder="Search database"
+        placeholder="Search the NASA database"
         allowClear
         enterButton="Search"
         size="large"
