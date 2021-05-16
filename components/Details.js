@@ -27,7 +27,6 @@ export default function Details({
   }
   */
   const { width, height } = useWindowDimensions();
-  console.log(width);
   const tags = data.keywords ? data.keywords.join(', ') : '';
   return (
     <Modal
@@ -41,6 +40,7 @@ export default function Details({
       width={width}
       cancelButtonProps={{ style: { display: 'none' } }}
       centered={true}
+      maskStyle={{ background: 'rgba(0, 0, 0, 0.9)' }}
     >
       <div className="image-container">
         <Image src={link} layout="fill" objectFit="contain" />

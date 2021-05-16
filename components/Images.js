@@ -20,7 +20,6 @@ export default function Images({ data, loading }) {
     loading: bool;
   }
   */
-  console.log(data);
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const [detailedData, setDetailedData] = useState({});
@@ -36,7 +35,6 @@ export default function Images({ data, loading }) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  console.log(isModalVisible);
 
   return loading ? (
     <div className="loading">
