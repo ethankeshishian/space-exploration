@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import { useState } from 'react';
 import Images from '../components/Images';
 
+// Main page. Defines search function, app state, and layout.
 export default function Home() {
   const url = `https://images-api.nasa.gov/search`;
   const [items, setItems] = useState([]);

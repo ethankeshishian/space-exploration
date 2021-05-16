@@ -8,6 +8,7 @@ function getWindowDimensions() {
   };
 }
 
+// Gets window height and width. Works with resize.
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()

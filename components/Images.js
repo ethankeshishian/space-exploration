@@ -7,6 +7,7 @@ import Details from './Details';
 import { useState } from 'react';
 import { Modal } from 'antd';
 
+// This component shows search results. While searching, displays loading component.
 export default function Images({ data, loading }) {
   /* 
   props: {
@@ -22,9 +23,12 @@ export default function Images({ data, loading }) {
   */
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
+  // State variables update when image is clicked. State passed to child Details component
   const [detailedData, setDetailedData] = useState({});
   const [imageLink, setImageLink] = useState('');
 
+  // Variables for child Detail component logic
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);

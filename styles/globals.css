@@ -36,7 +36,7 @@ h6 {
   --text-color: white;
 }
 
-/* antd styles */
+/* Custom antd styles */
 .ant-modal-header {
   background-color: var(--background-theme);
 }

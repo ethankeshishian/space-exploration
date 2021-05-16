@@ -1,6 +1,7 @@
 import { Input } from 'antd';
 const { Search } = Input;
 
+// Component for search bar. Searches NASA database with API. Function passed as props.
 export default function SearchBar({ search }) {
   //props: {search: Function}
 

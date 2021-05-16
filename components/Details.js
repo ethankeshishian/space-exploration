@@ -4,6 +4,7 @@ import { useWindowDimensions } from '../hooks';
 import { theme } from '../constants';
 import Date from './Date';
 
+// Popup modal for more details on a search result
 export default function Details({
   data,
   link,
