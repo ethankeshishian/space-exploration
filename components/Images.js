@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Images({ data, loading }) {
   /* 
@@ -17,6 +19,7 @@ export default function Images({ data, loading }) {
   */
   console.log(data);
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   return loading ? (
     <div className="loading">
@@ -37,16 +40,28 @@ export default function Images({ data, loading }) {
     <div className="images">
       {data.map((item) => {
         if (item.links) {
+          const data = item.data[0];
           return item.links.map((link) => {
             if (link.render === 'image') {
               return (
                 <div className="image-container" key={link.href}>
-                  <Image
-                    src={link.href}
-                    layout="fill"
-                    objectFit="cover"
-                    key={link.href}
-                  />
+                  {isTabletOrMobile ? ( // Removes tooltip on mobile. Replace with text beneath instead.
+                    <Image
+                      src={link.href}
+                      layout="fill"
+                      objectFit="cover"
+                      key={link.href}
+                    />
+                  ) : (
+                    <Tooltip title={data.title} placement="bottom">
+                      <Image
+                        src={link.href}
+                        layout="fill"
+                        objectFit="cover"
+                        key={link.href}
+                      />
+                    </Tooltip>
+                  )}
                 </div>
               );
             }
@@ -64,6 +79,10 @@ export default function Images({ data, loading }) {
         }
         .image-container {
           position: relative;
+          transition: all 0.1s ease-in-out;
+        }
+        .image-container:hover {
+          transform: scale(1.05);
         }
       `}</style>
     </div>

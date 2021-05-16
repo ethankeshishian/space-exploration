@@ -16,12 +16,25 @@ a {
   box-sizing: border-box;
   color: white;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px black;
+}
+
 /* Global constants */
 :root {
   --background-theme: #21242b;
   --accent-color: white;
   --accent-active: black;
 }
+
 /* antd styles */
 /* .ant-btn-primary {
   background: var(--accent-color);

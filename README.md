@@ -1,13 +1,15 @@
 ## High-Level TODO:
 
-- API Endpoint to search
-- Responsive grid
 - Information page
 - Deploy
 
-### Other:
+### Future:
 
 - Redux
+- Additional search fields
+- Pop up additional info
+- Custom styles to components (dark theme search bar button, etc.)
+- Header _inside_ search component; background continues inside header
 
 ## Deploy on Vercel
 
