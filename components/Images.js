@@ -3,6 +3,9 @@ import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 import { useMediaQuery } from 'react-responsive';
+import Details from '../components/Details';
+import { useState } from 'react';
+import { Modal } from 'antd';
 
 export default function Images({ data, loading }) {
   /* 
@@ -20,6 +23,20 @@ export default function Images({ data, loading }) {
   console.log(data);
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const [detailedData, setDetailedData] = useState({});
+  const [imageLink, setImageLink] = useState('');
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  console.log(isModalVisible);
 
   return loading ? (
     <div className="loading">
@@ -38,9 +55,16 @@ export default function Images({ data, loading }) {
     <></>
   ) : (
     <div className="images">
+      <Details
+        isModalVisible={isModalVisible}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        data={detailedData}
+        link={imageLink}
+      />
       {data.map((item) => {
         if (item.links) {
-          const data = item.data[0];
+          const itemData = item.data[0];
           return item.links.map((link) => {
             if (link.render === 'image') {
               return (
@@ -51,14 +75,24 @@ export default function Images({ data, loading }) {
                       layout="fill"
                       objectFit="cover"
                       key={link.href}
+                      onClick={() => {
+                        showModal();
+                        setDetailedData(itemData);
+                        setImageLink(link.href);
+                      }}
                     />
                   ) : (
-                    <Tooltip title={data.title} placement="bottom">
+                    <Tooltip title={itemData.title} placement="bottom">
                       <Image
                         src={link.href}
                         layout="fill"
                         objectFit="cover"
                         key={link.href}
+                        onClick={() => {
+                          showModal();
+                          setDetailedData(itemData);
+                          setImageLink(link.href);
+                        }}
                       />
                     </Tooltip>
                   )}
