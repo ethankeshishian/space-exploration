@@ -1,0 +1,13 @@
+.text {
+  font-size: 1.5em;
+  margin: 0;
+}
+.italic-text {
+  font-style: italic;
+  display: inline-block;
+}
+.description {
+  font-size: 2em;
+  margin: 0;
+  margin-bottom: 0.25em;
+}

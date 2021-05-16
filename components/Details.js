@@ -27,6 +27,7 @@ export default function Details({
   }
   */
   const { width, height } = useWindowDimensions();
+  console.log(width);
   const tags = data.keywords ? data.keywords.join(', ') : '';
   return (
     <Modal
@@ -41,35 +42,19 @@ export default function Details({
       cancelButtonProps={{ style: { display: 'none' } }}
       centered={true}
     >
-      <div style={{ width: width, height: 0.6 * height, position: 'relative' }}>
+      <div className="image-container">
         <Image src={link} layout="fill" objectFit="contain" />
       </div>
-      <p style={{ fontSize: '2em', margin: 0, marginBottom: '.25em' }}>
-        {data.description}
-      </p>
+      <p className="description">{data.description}</p>
       {data.date_created ? (
-        <p
-          style={{
-            fontStyle: 'italic',
-            fontSize: '1.5em',
-            margin: '0',
-            display: 'inline-block',
-          }}
-        >
+        <p className="text text-italic">
           <Date dateString={data.date_created} />
         </p>
       ) : (
         <></>
       )}
       {data.center ? (
-        <p
-          style={{
-            fontStyle: 'italic',
-            fontSize: '1.5em',
-            margin: '0',
-            display: 'inline-block',
-          }}
-        >
+        <p className="text text-italic">
           {' - '}
           {data.center}
         </p>
@@ -77,22 +62,36 @@ export default function Details({
         <></>
       )}
       {data.location ? (
-        <p
-          style={{
-            fontSize: '1.5em',
-            margin: '0',
-          }}
-        >
-          Location: {data.location}{' '}
-        </p>
+        <p className="text">Location: {data.location} </p>
       ) : (
         <></>
       )}
-      {tags === '' ? (
-        <></>
-      ) : (
-        <p style={{ fontSize: '1.5em', margin: '0' }}>Tags: {tags}</p>
-      )}
+      {tags === '' ? <></> : <p className="text">Tags: {tags}</p>}
+      <style jsx>{`
+        .text {
+          font-size: 1.5em;
+          margin: 0;
+        }
+        .text-italic {
+          font-style: italic;
+          display: inline-block;
+        }
+        .description {
+          font-size: 2em;
+          margin: 0;
+          margin-bottom: 0.25em;
+        }
+        .image-container {
+          width: ${(width >= 767 ? width - 32 - 48 : width - 16 - 48) + 'px'};
+          height: ${0.6 * height + 'px'};
+          position: relative;
+        }
+        .description: {
+          font-size: 2em;
+          margin: 0;
+          margin-bottom: 0.25em;
+        }
+      `}</style>
     </Modal>
   );
 }

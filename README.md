@@ -6,7 +6,7 @@ Explore space and navigate the NASA database using this tool. Host locally or fi
 
 ### Dev commands:
 
-- Start development server with `npm run build`.
+- Start development server with `npm run dev`.
 - Build with `npm build`.
 - Deploying is automatic when pushing to `main`.
 
