@@ -1,9 +1,14 @@
 import { Input } from 'antd';
-
 const { Search } = Input;
 
-export default function SearchBar() {
-  const onSearch = () => {};
+export default function SearchBar(props) {
+  //props: {search: Function}
+  // const fetcher = (url) => fetch(url).then((r) => r.json());
+  // const { data, error } = useSWR('/api/searchNasa', fetcher);
+
+  // if (error) return <div>failed to load</div>;
+  // if (!data) return <div>loading...</div>;
+  // if (data) console.log(data);
   return (
     <div className="container">
       <Search
@@ -11,7 +16,7 @@ export default function SearchBar() {
         allowClear
         enterButton="Search"
         size="large"
-        onSearch={onSearch}
+        onSearch={props.search}
       />
       <style jsx>{`
         .container {

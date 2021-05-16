@@ -1,10 +1,23 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
+import { useState } from 'react';
+import Images from '../components/Images';
 
 export default function Home() {
+  const url = `https://images-api.nasa.gov/search`;
+  const [items, setItems] = useState([]);
+  // Search function passed to search bar
+  const onSearch = async (value) => {
+    const res = await fetch(url + '?q=' + value);
+    let data = res.json();
+    data
+      .then((r) => {
+        setItems(r.collection.items);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -16,10 +29,12 @@ export default function Home() {
         <Header />
       </div>
       <div>
-        <SearchBar />
+        <SearchBar search={onSearch} />
       </div>
       <main>
-        <div className={styles.grid}></div>
+        <div className={styles.images}>
+          <Images data={items} />
+        </div>
       </main>
     </div>
   );
