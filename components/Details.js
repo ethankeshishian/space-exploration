@@ -48,37 +48,33 @@ export default function Details({
       </div>
       <p className="description">{data.description}</p>
       {data.date_created ? (
-        <p className="text text-italic">
+        <p className="text text-inline">
           <Date dateString={data.date_created} />
         </p>
       ) : (
         <></>
       )}
       {data.center ? (
-        <p className="text text-italic">
+        <p className="text text-inline">
           {' - '}
           {data.center}
         </p>
       ) : (
         <></>
       )}
-      {data.location ? (
-        <p className="text">Location: {data.location} </p>
-      ) : (
-        <></>
-      )}
+      {data.location ? <p className="text">{data.location} </p> : <></>}
       {tags === '' ? <></> : <p className="text">Tags: {tags}</p>}
       <style jsx>{`
         .text {
-          font-size: 1.5em;
+          font-size: clamp(1em, 2vw, 1.5em);
           margin: 0;
-        }
-        .text-italic {
           font-style: italic;
+        }
+        .text-inline {
           display: inline-block;
         }
         .description {
-          font-size: 2em;
+          font-size: clamp(1.25em, 2.5vw, 2em);
           margin: 0;
           margin-bottom: 0.25em;
         }
@@ -86,11 +82,6 @@ export default function Details({
           width: ${(width >= 767 ? width - 32 - 48 : width - 16 - 48) + 'px'};
           height: ${0.6 * height + 'px'};
           position: relative;
-        }
-        .description: {
-          font-size: 2em;
-          margin: 0;
-          margin-bottom: 0.25em;
         }
       `}</style>
     </Modal>

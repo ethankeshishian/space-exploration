@@ -42,7 +42,7 @@ h6 {
 }
 .ant-modal-title {
   color: var(--text-color);
-  font-size: 2.5em;
+  font-size: clamp(1em, 5vw, 2.5em);
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: unset;
