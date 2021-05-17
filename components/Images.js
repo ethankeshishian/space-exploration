@@ -1,11 +1,9 @@
 import Image from 'next/image';
-import { Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
-import { Tooltip } from 'antd';
-import { useMediaQuery } from 'react-responsive';
 import Details from './Details';
+import { Spin, Tooltip } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import { Modal } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 
 // This component shows search results. While searching, displays loading component.
 export default function Images({ data, loading }) {

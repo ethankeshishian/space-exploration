@@ -1,6 +1,6 @@
 # Introduction
 
-Explore space and navigate the NASA database using this tool. Host locally or find it online [here](https://see-space.vercel.app).
+Explore space and navigate the NASA database using this tool. Host locally or find the hosted page [here](https://see-space.vercel.app). You can also view a demo of the project [here](https://www.youtube.com/watch?v=FcwX4hwIhAA).
 
 ## Other
 
@@ -16,3 +16,4 @@ Explore space and navigate the NASA database using this tool. Host locally or fi
 - Additional parameters below search bar
 - Extensive theming
 - Header extending search bar background
+- Title on mobile

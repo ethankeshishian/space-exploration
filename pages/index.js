@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import SearchBar from '../components/SearchBar';
-import { useState } from 'react';
 import Images from '../components/Images';
+import styles from '../styles/Home.module.css';
+import { useState } from 'react';
 
 // Main page. Defines search function, app state, and layout.
 export default function Home() {
