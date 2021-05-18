@@ -117,6 +117,7 @@ export default function Images({ data, loading }) {
         }
         .image-container:hover {
           transform: scale(1.05);
+          cursor: pointer;
         }
       `}</style>
     </div>
