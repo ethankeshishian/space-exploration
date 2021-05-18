@@ -22,4 +22,3 @@ Explore space and navigate the NASA database using this tool. Host locally or fi
 - Additional parameters below search bar
 - Extensive theming
 - Header extending search bar background
-- Title on mobile

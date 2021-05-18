@@ -54,7 +54,7 @@ export default function Images({ data, loading }) {
   ) : data.length === 0 ? (
     <></>
   ) : (
-    <div className="images">
+    <div className={isTabletOrMobile ? 'images-mobile' : 'images-desktop'}>
       <Details
         isModalVisible={isModalVisible}
         handleOk={handleOk}
@@ -68,33 +68,42 @@ export default function Images({ data, loading }) {
           return item.links.map((link) => {
             if (link.render === 'image') {
               return (
-                <div className="image-container" key={link.href}>
-                  {isTabletOrMobile ? ( // Removes tooltip on mobile. Replace with text beneath instead.
-                    <Image
-                      src={link.href}
-                      layout="fill"
-                      objectFit="cover"
-                      key={link.href}
-                      onClick={() => {
-                        showModal();
-                        setDetailedData(itemData);
-                        setImageLink(link.href);
-                      }}
-                    />
+                <div>
+                  {isTabletOrMobile ? ( // Replaces tooltip with image caption on mobile
+                    <>
+                      <div className="image-container" key={link.href}>
+                        <Image
+                          src={link.href}
+                          layout="fill"
+                          objectFit="cover"
+                          key={link.href}
+                          onClick={() => {
+                            showModal();
+                            setDetailedData(itemData);
+                            setImageLink(link.href);
+                          }}
+                        />
+                      </div>
+                      <div className="title-container">
+                        <span className="image-title">{itemData.title}</span>
+                      </div>
+                    </>
                   ) : (
-                    <Tooltip title={itemData.title} placement="bottom">
-                      <Image
-                        src={link.href}
-                        layout="fill"
-                        objectFit="cover"
-                        key={link.href}
-                        onClick={() => {
-                          showModal();
-                          setDetailedData(itemData);
-                          setImageLink(link.href);
-                        }}
-                      />
-                    </Tooltip>
+                    <div className="image-container" key={link.href}>
+                      <Tooltip title={itemData.title} placement="bottom">
+                        <Image
+                          src={link.href}
+                          layout="fill"
+                          objectFit="cover"
+                          key={link.href}
+                          onClick={() => {
+                            showModal();
+                            setDetailedData(itemData);
+                            setImageLink(link.href);
+                          }}
+                        />
+                      </Tooltip>
+                    </div>
                   )}
                 </div>
               );
@@ -103,21 +112,37 @@ export default function Images({ data, loading }) {
         }
       })}
       <style jsx>{`
-        .images {
+        .images-mobile,
+        .images-desktop {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, auto));
           grid-auto-flow: row;
-          grid-auto-rows: minmax(300px, auto);
           gap: 12px;
           padding: 12px;
+        }
+        .images-mobile {
+          grid-auto-rows: minmax(332px, auto);
+        }
+        .images-desktop {
+          grid-auto-rows: minmax(300px, auto);
         }
         .image-container {
           position: relative;
           transition: all 0.1s ease-in-out;
+          height: 300px;
         }
         .image-container:hover {
           transform: scale(1.05);
           cursor: pointer;
+        }
+        .title-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          min-height: 32px;
+        }
+        .image-title {
         }
       `}</style>
     </div>
